@@ -1,0 +1,56 @@
+{
+  "name": "@edgeworkscreative/stencil-electron-app-starter",
+  "productName": "Stencil Electron Starter",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Minimal starter project for building an Electron app with Stencil.",
+  "scripts": {
+    "build": "stencil build",
+    "dev": "ts-node ./scripts/dev.ts",
+    "start": "npm run dev",
+    "test": "jest",
+    "test.watch": "jest --watch"
+  },
+  "dependencies": {
+    "@ionic/core": "^4.0.0-beta.11",
+    "@stencil/core": "^0.13.0-13",
+    "@stencil/router": "^0.2.8",
+    "electron": "^2.0.10",
+    "electron-reload": "^1.2.5",
+    "electron-serve": "^0.2.0",
+    "electron-store": "^2.0.0",
+    "robotjs": "^0.5.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.11.0",
+    "@types/shelljs": "^0.8.0",
+    "jest": "^23.4.2",
+    "shelljs": "^0.8.2",
+    "ts-node": "^7.0.1",
+    "workbox-build": "3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edgeworkscreative/stencil-electron-app-starter.git"
+  },
+  "author": "Edgeworks Creative",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edgeworkscreative/stencil-electron-app-starter"
+  },
+  "homepage": "https://github.com/edgeworkscreative/stencil-electron-app-starter",
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  }
+}
