@@ -7,44 +7,55 @@
 
 import '@stencil/core';
 
-import '@stencil/router';
-import '@stencil/state-tunnel';
 import '@ionic/core';
 import 'ionicons';
-import {
-  MatchResults,
-} from '@stencil/router';
 
 
 export namespace Components {
+
+  interface AppHeader {}
+  interface AppHeaderAttributes extends StencilHTMLAttributes {}
 
   interface AppHome {}
   interface AppHomeAttributes extends StencilHTMLAttributes {}
 
   interface AppProfile {
-    'match': MatchResults;
+    'name': string;
   }
   interface AppProfileAttributes extends StencilHTMLAttributes {
-    'match'?: MatchResults;
+    'name'?: string;
   }
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface HeaderPopover {}
+  interface HeaderPopoverAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
+    'AppHeader': Components.AppHeader;
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'HeaderPopover': Components.HeaderPopover;
   }
 
   interface StencilIntrinsicElements {
+    'app-header': Components.AppHeaderAttributes;
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'header-popover': Components.HeaderPopoverAttributes;
   }
 
+
+  interface HTMLAppHeaderElement extends Components.AppHeader, HTMLStencilElement {}
+  var HTMLAppHeaderElement: {
+    prototype: HTMLAppHeaderElement;
+    new (): HTMLAppHeaderElement;
+  };
 
   interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
   var HTMLAppHomeElement: {
@@ -64,16 +75,26 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLHeaderPopoverElement extends Components.HeaderPopover, HTMLStencilElement {}
+  var HTMLHeaderPopoverElement: {
+    prototype: HTMLHeaderPopoverElement;
+    new (): HTMLHeaderPopoverElement;
+  };
+
   interface HTMLElementTagNameMap {
+    'app-header': HTMLAppHeaderElement
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'header-popover': HTMLHeaderPopoverElement
   }
 
   interface ElementTagNameMap {
+    'app-header': HTMLAppHeaderElement;
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'header-popover': HTMLHeaderPopoverElement;
   }
 
 

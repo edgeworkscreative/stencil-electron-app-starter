@@ -26,3 +26,17 @@ UserInterfaceState.xcuserstate
 .env
 
 Electron/*.js
+
+test/Stencil Electron Starter-win32-x64/
+
+test/
+
+test2/Stencil Electron Starter-win32-x64/
+
+test2/Stencil Electron Starter-darwin-x64/
+
+test2/Stencil Electron Starter-mas-x64/
+
+test2/Stencil Electron Starter-linux-x64/
+
+test2/@edgeworkscreative-stencil-electron-app-starter-linux-ia32/

@@ -1,7 +1,8 @@
 {
-  "name": "@edgeworkscreative/stencil-electron-app-starter",
+  "name": "stencil-electron-app-starter",
   "productName": "Stencil Electron Starter",
   "private": true,
+  "main": "./Electron/App.js",
   "version": "0.0.1",
   "description": "Minimal starter project for building an Electron app with Stencil.",
   "scripts": {
@@ -9,32 +10,41 @@
     "dev": "ts-node ./scripts/dev.ts",
     "start": "npm run dev",
     "test": "jest",
-    "test.watch": "jest --watch"
+    "test.watch": "jest --watch",
+    "packager": "npm run build && npx electron-packager . --out test2 --platform=linux,win32 --overwrite --icon=./src/assets/icon/icon"
   },
   "dependencies": {
     "@ionic/core": "^4.0.0-beta.11",
-    "@stencil/core": "^0.13.0-13",
-    "@stencil/router": "^0.2.8",
-    "electron": "^2.0.10",
+    "@stencil/router": "^0.3.0",
     "electron-reload": "^1.2.5",
     "electron-serve": "^0.2.0",
     "electron-store": "^2.0.0",
-    "robotjs": "^0.5.1"
+    "node-notifier": "^5.2.1",
+    "pkg-up": "^2.0.0"
   },
   "devDependencies": {
+    "electron": "^3.0.1",
+    "@stencil/core": "^0.13.0-13",
     "@types/jest": "^23.3.1",
-    "@types/node": "^10.11.0",
+    "@types/node-notifier": "0.0.28",
     "@types/shelljs": "^0.8.0",
+    "electron-builder": "^20.28.4",
+    "electron-packager": "^12.1.2",
     "jest": "^23.4.2",
+    "node-gyp": "^3.8.0",
     "shelljs": "^0.8.2",
     "ts-node": "^7.0.1",
+    "typescript": "^3.1.1",
     "workbox-build": "3.4.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edgeworkscreative/stencil-electron-app-starter.git"
   },
-  "author": "Edgeworks Creative",
+  "author": {
+    "name": "Edgeworks Creative",
+    "email": "hello@edgeworkscreative.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/edgeworkscreative/stencil-electron-app-starter"
@@ -52,5 +62,14 @@
       "json",
       "jsx"
     ]
+  },
+  "build": {
+    "productName": "MyApp",
+    "compression": "store",
+    "forceCodeSigning": false,
+    "asar": false,
+    "win": {
+      "icon": "/project/src/assets/icon/icon.ico"
+    }
   }
 }

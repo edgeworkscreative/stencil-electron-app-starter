@@ -80,6 +80,24 @@ export class AppRoot {
       click() {
         console.log('item 2 clicked');
       }
+    },
+    {
+      label: 'Go Back',
+      click() {
+        window.history.back();
+      }
+    },
+    {
+      label: 'Go Forward',
+      click() {
+        window.history.forward();
+      }
+    },
+    {
+      label: 'Reload',
+      click() {
+        window.location.reload();
+      }
     }
   ];
   
@@ -88,12 +106,14 @@ export class AppRoot {
     const menu = this.remote.menu.buildFromTemplate(this.applicationMenu);
     this.remote.menu.setApplicationMenu(menu);
     
+    // store example
     this.remote.store.set('user_id', Math.random());
     console.log('get test user_id', this.remote.store.get('user_id'));
+    console.log('store path', this.remote.store.path);
+    
     console.log('os', this.remote.os.platform());
     console.log('free memory', this.remote.os.freemem());
     console.log('home dir', this.remote.os.homedir());
-    console.log('store path', this.remote.store.path);
   }
   
   @Listen('window:visibilitychange')
@@ -114,20 +134,14 @@ export class AppRoot {
   
   render() {
     return (
-      <div>
-        <header>
-          <h1>{this.remote.packageJson.productName} - {this.remote.packageJson.version}</h1>
-        </header>
-        
-        <main>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url='/' component='app-home' exact={true}/>
-              <stencil-route url='/profile/:name' component='app-profile'/>
-            </stencil-route-switch>
-          </stencil-router>
-        </main>
-      </div>
+      <ion-app class={'md'}>
+        <ion-router useHash={false} root="/">
+          <ion-route url="/" component="app-home"/>
+          <ion-route url="/profile/:name" component="app-profile"/>
+        </ion-router>
+        <ion-nav/>
+        <ion-router-outlet animated={false}/>
+      </ion-app>
     );
   }
 }

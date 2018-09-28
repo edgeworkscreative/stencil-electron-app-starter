@@ -8,9 +8,22 @@
   Any global CSS variables should also be applied here.
 */
 
+@import "~@ionic/core/css/core.css";
+@import "~@ionic/core/css/normalize.css";
+@import "~@ionic/core/css/structure.css";
+@import "~@ionic/core/css/typography.css";
 
-body {
-  margin: 0px;
-  padding: 0px;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+@import "~@ionic/core/css/padding.css";
+@import "~@ionic/core/css/float-elements.css";
+@import "~@ionic/core/css/text-alignment.css";
+@import "~@ionic/core/css/text-transformation.css";
+@import "~@ionic/core/css/flex-utils.css";
+
+
+ion-router-outlet {
+  display: none;
+}
+
+.header-popover-content {
+  margin-top: 44px;
 }

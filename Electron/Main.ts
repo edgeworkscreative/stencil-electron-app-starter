@@ -1,16 +1,19 @@
-import {BrowserWindow, ipcMain} from 'electron';
+import {BrowserWindow} from 'electron';
 import {readFileSync} from 'fs';
 import {PackageJson} from '../src/Types/package-json';
 
-const packageJSON: PackageJson = JSON.parse(readFileSync('package.json', 'utf8'));
+const isDev = process.execPath.includes('node_modules/electron/dist/electron');
 const path = require('path');
+const packageJSON: PackageJson = JSON.parse(readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'));
 const serve = require('electron-serve');
 const loadURL = serve({directory: path.join(__dirname, '..', 'www'), scheme: 'stencil-electron'});
 
-require('electron-reload')(path.join(__dirname, '..', 'www'), {
-  electron:        path.join(__dirname, '..', 'node_modules', '.bin', 'electron'),
-  hardResetMethod: 'exit'
-});
+if (isDev) {
+  require('electron-reload')(path.join(__dirname, '..', 'www'), {
+    electron:        path.join(__dirname, '..', 'node_modules', '.bin', 'electron'),
+    hardResetMethod: 'exit'
+  });
+}
 
 // https://medium.com/@davembush/typescript-and-electron-the-right-way-141c2e15e4e1
 export default class Main {
@@ -30,9 +33,13 @@ export default class Main {
   }
   
   private static onReady() {
-    Main.mainWindow = new Main.BrowserWindow({});
+    Main.mainWindow = new Main.BrowserWindow({
+      icon: path.join(__dirname, '..', 'www', 'assets', 'icon', 'icon.png')
+    });
     loadURL(Main.mainWindow);
-    Main.mainWindow.webContents.openDevTools();
+    if (isDev) {
+      Main.mainWindow.webContents.openDevTools();
+    }
     Main.mainWindow.on('closed', Main.onClose);
   }
   

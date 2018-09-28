@@ -1,25 +1,30 @@
-import { Component, Prop } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
+import {Component, Prop} from '@stencil/core';
 
 
 @Component({
-  tag: 'app-profile',
+  tag:      'app-profile',
   styleUrl: 'app-profile.css'
 })
 export class AppProfile {
   
-  @Prop() match: MatchResults;
-
+  @Prop() name: string;
+  
   render() {
     
-      return (
-        <div class='app-profile'>
-          <p>
-            Hello! My name is {this.match.params.name}.
-            My name was passed in through a route param!
-          </p>
-        </div>
-      );
+    return [
+      <app-header/>,
+      <ion-content padding>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Hello, {this.name}.
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Your name was passed in through a prop!
+          </ion-card-content>
+        </ion-card>
+      </ion-content>];
     
   }
 }
