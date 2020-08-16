@@ -1,0 +1,39 @@
+{
+  "name": "stencil-electron-app-starter",
+  "productName": "Stencil Electron Starter",
+  "private": true,
+  "version": "0.0.1",
+  "description": "stencil-electron-app-starter",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "dev": "ts-node ./scripts/dev.ts",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watch",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@ionic/core": "5.3.1",
+    "@stencil/core": "1.17.3",
+    "@types/node": "12.12.21",
+    "electron": "9.2.0",
+    "electron-builder": "22.8.0",
+    "shelljs": "0.8.4",
+    "ts-node": "8.10.2",
+    "electron-reload": "1.5.0",
+    "electron-serve": "1.0.0"
+  },
+  "build": {
+    "productName": "MyApp",
+    "compression": "store",
+    "forceCodeSigning": false,
+    "asar": false,
+    "win": {
+      "icon": "/project/src/assets/icon/icon.ico"
+    }
+  }
+}
