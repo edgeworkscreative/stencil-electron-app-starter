@@ -23,7 +23,7 @@
     "pkg-up": "^2.0.0"
   },
   "devDependencies": {
-    "electron": "^3.0.1",
+    "electron": "^9.2.0",
     "@stencil/core": "^0.13.0-13",
     "@types/jest": "^23.3.1",
     "@types/node-notifier": "0.0.28",
